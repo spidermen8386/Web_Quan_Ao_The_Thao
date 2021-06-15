@@ -160,12 +160,14 @@
     <Compile Include="Areas\Administrator\Controllers\ChiTietDatHangController.cs" />
     <Compile Include="Areas\Administrator\Controllers\DatHangController.cs" />
     <Compile Include="Areas\Administrator\Controllers\DoiTuongController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administrator\Controllers\KhachHangController.cs" />
     <Compile Include="Areas\Administrator\Controllers\KichCoController.cs" />
     <Compile Include="Areas\Administrator\Controllers\NhaSanXuatController.cs" />
     <Compile Include="Areas\Administrator\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TheLoaiController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\TinTucController.cs" />
     <Compile Include="Areas\Administrator\Controllers\USERController.cs" />
     <Compile Include="Content\GioHang.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -179,6 +181,7 @@
   <ItemGroup>
     <Content Include="Areas\Administrator\Content\build\css\custom.css" />
     <Content Include="Areas\Administrator\Content\build\css\custom1.min.css" />
+    <Content Include="Areas\Administrator\Content\build\css\custom2.min.css" />
     <Content Include="Areas\Administrator\Content\build\images\back_disabled.png" />
     <Content Include="Areas\Administrator\Content\build\images\back_enabled.png" />
     <Content Include="Areas\Administrator\Content\build\images\back_enabled_hover.png" />
@@ -4800,10 +4803,20 @@
     <Content Include="Areas\Administrator\Views\TheLoai\Edit.cshtml" />
     <Content Include="Areas\Administrator\Views\TheLoai\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\USER\Create.cshtml" />
+<<<<<<< Updated upstream
     <Content Include="Areas\Administrator\Views\USER\Details.cshtml" />
     <Content Include="Areas\Administrator\Views\USER\Edit.cshtml" />
     <Content Include="Areas\Administrator\Views\USER\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\ChiTietDatHang\Index.cshtml" />
+=======
+    <Content Include="Areas\Administrator\Views\TinTuc\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\TinTuc\Create.cshtml" />
+    <Content Include="Areas\Administrator\Views\TinTuc\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\TinTuc\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\USER\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\Feedback\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\USER\Edit.cshtml" />
+>>>>>>> Stashed changes
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4842,6 +4855,8 @@
     <Content Include="Views\ShoppingCart\FormTTKH.cshtml" />
     <Content Include="Views\SanPham\TheLoai.cshtml" />
     <Content Include="Views\SanPham\SearchName.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Feedback_Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4869,9 +4884,24 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <ProjectReference Include="..\WebShop.Model\WebShop.Model.csproj">
       <Project>{74edc8e4-cc63-4c74-9450-acbbc4de2960}</Project>
       <Name>WebShop.Model</Name>
+=======
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebQuanAoNamNu1.Model\WebQuanAoNamNu1.Model.csproj">
+      <Project>{d56ec5ca-2b2d-4286-88df-9baad705572d}</Project>
+      <Name>WebQuanAoNamNu1.Model</Name>
+>>>>>>> Stashed changes
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

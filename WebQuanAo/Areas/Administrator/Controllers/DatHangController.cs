@@ -29,13 +29,27 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DatHang datHang = db.DatHangs.Find(id);
+            datHang.SoHoaDon = this.GuidId();//
             if (datHang == null)
             {
                 return HttpNotFound();
             }
             return View(datHang);
         }
+        public string GuidId()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[10];
+            var random = new Random();
 
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
         // GET: Administrator/DatHang/Create
         public ActionResult Create()
         {
@@ -52,6 +66,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                datHang.SoHoaDon = this.GuidId();//
                 db.DatHangs.Add(datHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -69,6 +84,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DatHang datHang = db.DatHangs.Find(id);
+            datHang.SoHoaDon = this.GuidId();//
             if (datHang == null)
             {
                 return HttpNotFound();
@@ -86,6 +102,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                datHang.SoHoaDon = this.GuidId();//
                 db.Entry(datHang).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,6 +119,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DatHang datHang = db.DatHangs.Find(id);
+            datHang.SoHoaDon = this.GuidId();//
             if (datHang == null)
             {
                 return HttpNotFound();
@@ -114,7 +132,9 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+           
             DatHang datHang = db.DatHangs.Find(id);
+            datHang.SoHoaDon = this.GuidId();//
             db.DatHangs.Remove(datHang);
             db.SaveChanges();
             return RedirectToAction("Index");

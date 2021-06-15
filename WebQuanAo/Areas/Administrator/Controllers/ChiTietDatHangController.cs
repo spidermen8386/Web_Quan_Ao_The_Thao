@@ -30,13 +30,27 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ChiTietDatHang chiTietDatHang = db.ChiTietDatHangs.Find(id);
+            chiTietDatHang.ID = this.GuidId();//
             if (chiTietDatHang == null)
             {
                 return HttpNotFound();
             }
             return View(chiTietDatHang);
         }
+        public string GuidId()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[10];
+            var random = new Random();
 
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
         // GET: Administrator/ChiTietDatHang/Create
         public ActionResult Create()
         {
@@ -54,6 +68,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                chiTietDatHang.ID = this.GuidId();//
                 db.ChiTietDatHangs.Add(chiTietDatHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -72,6 +87,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ChiTietDatHang chiTietDatHang = db.ChiTietDatHangs.Find(id);
+            chiTietDatHang.ID = this.GuidId();//
             if (chiTietDatHang == null)
             {
                 return HttpNotFound();
@@ -90,6 +106,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                chiTietDatHang.ID = this.GuidId();//
                 db.Entry(chiTietDatHang).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -107,6 +124,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ChiTietDatHang chiTietDatHang = db.ChiTietDatHangs.Find(id);
+            chiTietDatHang.ID = this.GuidId();//
             if (chiTietDatHang == null)
             {
                 return HttpNotFound();
@@ -120,6 +138,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             ChiTietDatHang chiTietDatHang = db.ChiTietDatHangs.Find(id);
+            chiTietDatHang.ID = this.GuidId();//
             db.ChiTietDatHangs.Remove(chiTietDatHang);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -52,5 +52,38 @@ namespace WebQuanAo.Controllers
 
             return View();
         }
+        public ActionResult News()
+        {
+            return View(db.TinTucs.ToList());
+        }
+        public string GuidId()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[10];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
+        public ActionResult Feedback(FormCollection form)
+        {
+            Feedback fb = new Feedback();
+            fb.IDfeedback = this.GuidId();
+            fb.Name = form["NameFeedback"];
+            fb.Mail = form["MailFeedback"];
+            fb.Description = form["Motafeedback"];
+            db.Feedbacks.Add(fb);
+            db.SaveChanges();
+            return RedirectToAction("Feedback_Success", "Home");
+        }
+        public ActionResult Feedback_Success()
+        {
+            return View();
+        }
     }
 }

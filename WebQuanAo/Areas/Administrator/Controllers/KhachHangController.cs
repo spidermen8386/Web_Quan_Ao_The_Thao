@@ -28,6 +28,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             KhachHang khachHang = db.KhachHangs.Find(id);
+            khachHang.MaKhachHang = this.GuidId();//
             if (khachHang == null)
             {
                 return HttpNotFound();
@@ -50,6 +51,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                khachHang.MaKhachHang = this.GuidId();//
                 db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,13 +68,27 @@ namespace WebQuanAo.Areas.Administrator.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             KhachHang khachHang = db.KhachHangs.Find(id);
+            khachHang.MaKhachHang = this.GuidId();//
             if (khachHang == null)
             {
                 return HttpNotFound();
             }
             return View(khachHang);
         }
+        public string GuidId()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[10];
+            var random = new Random();
 
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
         // POST: Administrator/KhachHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -82,6 +98,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                khachHang.MaKhachHang = this.GuidId();//
                 db.Entry(khachHang).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,6 +127,7 @@ namespace WebQuanAo.Areas.Administrator.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             KhachHang khachHang = db.KhachHangs.Find(id);
+            khachHang.MaKhachHang = this.GuidId();//
             db.KhachHangs.Remove(khachHang);
             db.SaveChanges();
             return RedirectToAction("Index");

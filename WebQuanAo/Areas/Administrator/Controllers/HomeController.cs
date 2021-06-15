@@ -26,8 +26,14 @@ namespace WebQuanAo.Areas.Administrator.Controllers
             USER user = db.USERS.SingleOrDefault(x => x.UserName == username && x.PassWord == password && x.Allowed == 1);
             if (user != null)
             {
+<<<<<<< Updated upstream
                 Session["userid"] = user.UserId;
                 Session["username"] = user.UserName;
+=======
+                Session["roleid"] = user.ID_Role;
+                Session["userid"] = user.MaNhanVien;
+                Session["username"] = user.TenNhanVien;
+>>>>>>> Stashed changes
                 return RedirectToAction("Index");
             }
             ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu!";
